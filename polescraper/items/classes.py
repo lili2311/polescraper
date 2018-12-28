@@ -1,11 +1,11 @@
 import scrapy
 
 
-class CourseItem(scrapy.Item):
+class ClassItem(scrapy.Item):
     # define the fields for your item here like:
     title = scrapy.Field()
-    start_date = scrapy.Field()
-    end_date = scrapy.Field()
+    date = scrapy.Field()
+    start_time = scrapy.Field()
+    end_time = scrapy.Field()
     url = scrapy.Field()
-
 

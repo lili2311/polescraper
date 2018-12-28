@@ -5,7 +5,7 @@ from polescraper.items.course import CourseItem
 
 
 class PolePeopleSpider(scrapy.Spider):
-    name = "polepeople"
+    name = "polepeople-courses"
 
     def start_requests(self):
         url = 'https://goteamup.com/p/891621-polepeople-dance-fitness/courses/'
@@ -17,6 +17,7 @@ class PolePeopleSpider(scrapy.Spider):
         for course_selector in courses_data:
           loader = CourseLoader(selector=course_selector)
           loader.add_css('title', '.primary-text::text')
+          loader.add_css('url', '.primary-text::text')
           date = course_selector.css('.more-details li:first-of-type::text').extract()[0]
           start_date, end_date = date.split('–')
           loader.add_value('start_date', start_date)
